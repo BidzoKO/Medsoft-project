@@ -9,12 +9,20 @@ namespace Medsoft_სატესტო_პროგრამა
 			InitializeComponent();
 			InitialData();
 			this.Load += new EventHandler(Home_Load);
-			this.MouseDown += new MouseEventHandler(Form_MouseDown);
+			PatientTable.MouseClick += new MouseEventHandler(PatientTable_MouseClick);
+			this.Click += new EventHandler(Form_MouseDown);
 		}
 
-		private void Form_MouseDown(object sender, MouseEventArgs e)
+		private void Form_MouseDown(object sender, EventArgs e)
 		{
-			if (ActiveControl != PatientTable)
+			PatientTable.ClearSelection();
+		}
+
+		private void PatientTable_MouseClick(object sender, MouseEventArgs e)
+		{
+			DataGridView.HitTestInfo hitTestInfo = PatientTable.HitTest(e.X, e.Y);
+
+			if (hitTestInfo.Type == DataGridViewHitTestType.None)
 			{
 				PatientTable.ClearSelection();
 			}
@@ -126,6 +134,11 @@ namespace Medsoft_სატესტო_პროგრამა
 		}
 
 		private void button3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label1_Click(object sender, EventArgs e)
 		{
 
 		}

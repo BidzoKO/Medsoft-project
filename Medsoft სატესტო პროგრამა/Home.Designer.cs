@@ -43,11 +43,15 @@
 			AddButton = new Button();
 			EditButton = new Button();
 			DeleteButton = new Button();
+			label1 = new Label();
+			label2 = new Label();
+			label3 = new Label();
 			((System.ComponentModel.ISupportInitialize)PatientTable).BeginInit();
 			SuspendLayout();
 			// 
 			// PatientTable
 			// 
+			PatientTable.AllowUserToAddRows = false;
 			dataGridViewCellStyle1.BackColor = Color.LightGray;
 			dataGridViewCellStyle1.Font = new Font("Arial", 11F);
 			dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
@@ -73,8 +77,9 @@
 			PatientTable.Columns.AddRange(new DataGridViewColumn[] { ID, PatientName, Dob, Gender, Phone, Address, PersonId, EMail });
 			PatientTable.EnableHeadersVisualStyles = false;
 			PatientTable.GridColor = SystemColors.ActiveCaptionText;
-			PatientTable.Location = new Point(66, 37);
+			PatientTable.Location = new Point(66, 34);
 			PatientTable.Margin = new Padding(0);
+			PatientTable.MultiSelect = false;
 			PatientTable.Name = "PatientTable";
 			PatientTable.ReadOnly = true;
 			PatientTable.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -146,9 +151,9 @@
 			// AddButton
 			// 
 			AddButton.Anchor = AnchorStyles.None;
-			AddButton.Location = new Point(466, 575);
+			AddButton.Location = new Point(1022, 685);
 			AddButton.Name = "AddButton";
-			AddButton.Size = new Size(102, 40);
+			AddButton.Size = new Size(98, 40);
 			AddButton.TabIndex = 2;
 			AddButton.Text = "დამატება";
 			AddButton.UseVisualStyleBackColor = true;
@@ -157,9 +162,10 @@
 			// EditButton
 			// 
 			EditButton.Anchor = AnchorStyles.None;
-			EditButton.Location = new Point(600, 575);
+			EditButton.ImageAlign = ContentAlignment.MiddleLeft;
+			EditButton.Location = new Point(1022, 590);
 			EditButton.Name = "EditButton";
-			EditButton.Size = new Size(107, 40);
+			EditButton.Size = new Size(98, 43);
 			EditButton.TabIndex = 3;
 			EditButton.Text = "რედაქტირება";
 			EditButton.UseVisualStyleBackColor = true;
@@ -168,19 +174,53 @@
 			// DeleteButton
 			// 
 			DeleteButton.Anchor = AnchorStyles.None;
-			DeleteButton.Location = new Point(726, 575);
+			DeleteButton.Location = new Point(1022, 639);
 			DeleteButton.Name = "DeleteButton";
-			DeleteButton.Size = new Size(102, 40);
+			DeleteButton.Size = new Size(98, 40);
 			DeleteButton.TabIndex = 4;
 			DeleteButton.Text = "წაშლა";
 			DeleteButton.UseVisualStyleBackColor = true;
 			DeleteButton.Click += button3_Click;
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Image = Properties.Resources.Delete1;
+			label1.Location = new Point(1126, 639);
+			label1.MinimumSize = new Size(40, 40);
+			label1.Name = "label1";
+			label1.Size = new Size(40, 40);
+			label1.TabIndex = 5;
+			label1.Click += label1_Click;
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Image = Properties.Resources.add;
+			label2.Location = new Point(1126, 685);
+			label2.MinimumSize = new Size(40, 40);
+			label2.Name = "label2";
+			label2.Size = new Size(40, 40);
+			label2.TabIndex = 5;
+			// 
+			// label3
+			// 
+			label3.AutoSize = true;
+			label3.Image = Properties.Resources.Edit;
+			label3.Location = new Point(1126, 590);
+			label3.MinimumSize = new Size(40, 40);
+			label3.Name = "label3";
+			label3.Size = new Size(40, 40);
+			label3.TabIndex = 5;
 			// 
 			// Home
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(1235, 777);
+			Controls.Add(label3);
+			Controls.Add(label2);
+			Controls.Add(label1);
 			Controls.Add(DeleteButton);
 			Controls.Add(EditButton);
 			Controls.Add(AddButton);
@@ -190,6 +230,7 @@
 			Load += Home_Load;
 			((System.ComponentModel.ISupportInitialize)PatientTable).EndInit();
 			ResumeLayout(false);
+			PerformLayout();
 		}
 
 		#endregion
@@ -206,5 +247,8 @@
 		private DataGridViewTextBoxColumn Address;
 		private DataGridViewTextBoxColumn PersonId;
 		private DataGridViewTextBoxColumn EMail;
+		private Label label1;
+		private Label label2;
+		private Label label3;
 	}
 }
