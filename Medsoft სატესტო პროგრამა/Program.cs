@@ -1,17 +1,32 @@
+using Medsoft_სატესტო_პროგრამა.DataAccess;
+using Medsoft_სატესტო_პროგრამა.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Medsoft_სატესტო_პროგრამა
 {
 	internal static class Program
 	{
-		/// <summary>
-		///  The main entry point for the application.
-		/// </summary>
 		[STAThread]
 		static void Main()
 		{
-			// To customize application configuration such as set high DPI settings or default font,
-			// see https://aka.ms/applicationconfiguration.
+			var serviceCollection = new ServiceCollection();
+			ConfigureServices(serviceCollection);
+
+			var serviceProvider = serviceCollection.BuildServiceProvider();
+
 			ApplicationConfiguration.Initialize();
-			Application.Run(new Home());
+
+			var mainForm = serviceProvider.GetRequiredService<Home>();
+			Application.Run(mainForm);
+		}
+
+		private static void ConfigureServices(IServiceCollection services)
+		{
+			services.AddDbContext<PatientAppDbContext>(options =>
+				options.UseSqlServer("Server=BPC;Database=MedsoftDb;Trusted_Connection=True;TrustServerCertificate=True"));
+			services.AddScoped<IHomeService, HomeService>();
+			services.AddSingleton<Home>();
 		}
 	}
 }

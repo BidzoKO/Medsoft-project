@@ -1,4 +1,6 @@
-﻿namespace Medsoft_სატესტო_პროგრამა
+﻿using System.Windows.Forms;
+
+namespace Medsoft_სატესტო_პროგრამა
 {
 	partial class Home
 	{
@@ -33,7 +35,7 @@
 			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
 			PatientTable = new DataGridView();
 			ID = new DataGridViewTextBoxColumn();
-			PatientName = new DataGridViewTextBoxColumn();
+			PatientNames = new DataGridViewTextBoxColumn();
 			Dob = new DataGridViewTextBoxColumn();
 			Gender = new DataGridViewTextBoxColumn();
 			Phone = new DataGridViewTextBoxColumn();
@@ -74,10 +76,10 @@
 			dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
 			PatientTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			PatientTable.ColumnHeadersHeight = 35;
-			PatientTable.Columns.AddRange(new DataGridViewColumn[] { ID, PatientName, Dob, Gender, Phone, Address, PersonId, EMail });
+			PatientTable.Columns.AddRange(new DataGridViewColumn[] { ID, PatientNames, Dob, Gender, Phone, Address, PersonId, EMail });
 			PatientTable.EnableHeadersVisualStyles = false;
 			PatientTable.GridColor = SystemColors.ActiveCaptionText;
-			PatientTable.Location = new Point(66, 34);
+			PatientTable.Location = new Point(24, 28);
 			PatientTable.Margin = new Padding(0);
 			PatientTable.MultiSelect = false;
 			PatientTable.Name = "PatientTable";
@@ -87,27 +89,29 @@
 			dataGridViewCellStyle3.Font = new Font("Arial", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			PatientTable.RowsDefaultCellStyle = dataGridViewCellStyle3;
 			PatientTable.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-			PatientTable.Size = new Size(1160, 500);
+			PatientTable.Size = new Size(1280, 500);
 			PatientTable.TabIndex = 1;
-			PatientTable.CellContentClick += dataGridView1_CellContentClick;
 			// 
 			// ID
 			// 
 			ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+			ID.DataPropertyName = "ID";
 			ID.HeaderText = "ID";
 			ID.Name = "ID";
 			ID.ReadOnly = true;
 			ID.Width = 53;
 			// 
-			// PatientName
+			// PatientNames
 			// 
-			PatientName.HeaderText = "პაციენტის გვარი სახელი";
-			PatientName.Name = "PatientName";
-			PatientName.ReadOnly = true;
-			PatientName.Width = 265;
+			PatientNames.DataPropertyName = "PatientName";
+			PatientNames.HeaderText = "პაციენტის სახელი";
+			PatientNames.Name = "PatientNames";
+			PatientNames.ReadOnly = true;
+			PatientNames.Width = 205;
 			// 
 			// Dob
 			// 
+			Dob.DataPropertyName = "Dob";
 			Dob.HeaderText = "დაბ თარიღი";
 			Dob.Name = "Dob";
 			Dob.ReadOnly = true;
@@ -115,6 +119,7 @@
 			// 
 			// Gender
 			// 
+			Gender.DataPropertyName = "Gender";
 			Gender.HeaderText = "სქესი";
 			Gender.Name = "Gender";
 			Gender.ReadOnly = true;
@@ -122,6 +127,7 @@
 			// 
 			// Phone
 			// 
+			Phone.DataPropertyName = "Phone";
 			Phone.HeaderText = "მობ ნომერი";
 			Phone.Name = "Phone";
 			Phone.ReadOnly = true;
@@ -129,6 +135,7 @@
 			// 
 			// Address
 			// 
+			Address.DataPropertyName = "Address";
 			Address.HeaderText = "მისამართი";
 			Address.Name = "Address";
 			Address.ReadOnly = true;
@@ -136,6 +143,7 @@
 			// 
 			// PersonId
 			// 
+			PersonId.DataPropertyName = "PersonId";
 			PersonId.HeaderText = "პირადი ნომერი";
 			PersonId.Name = "PersonId";
 			PersonId.ReadOnly = true;
@@ -143,71 +151,75 @@
 			// 
 			// EMail
 			// 
-			EMail.HeaderText = "იმეილი";
+			EMail.DataPropertyName = "Email";
+			EMail.HeaderText = "მეილი";
 			EMail.Name = "EMail";
 			EMail.ReadOnly = true;
-			EMail.Width = 105;
+			EMail.Width = 94;
 			// 
 			// AddButton
 			// 
-			AddButton.Anchor = AnchorStyles.None;
-			AddButton.Location = new Point(1022, 685);
+			AddButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			AddButton.Location = new Point(1117, 699);
 			AddButton.Name = "AddButton";
 			AddButton.Size = new Size(98, 40);
 			AddButton.TabIndex = 2;
 			AddButton.Text = "დამატება";
 			AddButton.UseVisualStyleBackColor = true;
-			AddButton.Click += button1_Click;
+			AddButton.Click += Add_Click;
 			// 
 			// EditButton
 			// 
-			EditButton.Anchor = AnchorStyles.None;
+			EditButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			EditButton.ImageAlign = ContentAlignment.MiddleLeft;
-			EditButton.Location = new Point(1022, 590);
+			EditButton.Location = new Point(1117, 604);
 			EditButton.Name = "EditButton";
 			EditButton.Size = new Size(98, 43);
 			EditButton.TabIndex = 3;
 			EditButton.Text = "რედაქტირება";
 			EditButton.UseVisualStyleBackColor = true;
-			EditButton.Click += button2_Click;
+			EditButton.Click += Edit_Click;
 			// 
 			// DeleteButton
 			// 
-			DeleteButton.Anchor = AnchorStyles.None;
-			DeleteButton.Location = new Point(1022, 639);
+			DeleteButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			DeleteButton.Location = new Point(1117, 653);
 			DeleteButton.Name = "DeleteButton";
 			DeleteButton.Size = new Size(98, 40);
 			DeleteButton.TabIndex = 4;
 			DeleteButton.Text = "წაშლა";
 			DeleteButton.UseVisualStyleBackColor = true;
-			DeleteButton.Click += button3_Click;
+			DeleteButton.Click += Delete_Click;
 			// 
 			// label1
 			// 
+			label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			label1.AutoSize = true;
-			label1.Image = Properties.Resources.Delete1;
-			label1.Location = new Point(1126, 639);
+			label1.Image = Properties.Resources.Delete;
+			label1.Location = new Point(1221, 653);
 			label1.MinimumSize = new Size(40, 40);
 			label1.Name = "label1";
 			label1.Size = new Size(40, 40);
 			label1.TabIndex = 5;
-			label1.Click += label1_Click;
 			// 
 			// label2
 			// 
+			label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			label2.AutoSize = true;
-			label2.Image = Properties.Resources.add;
-			label2.Location = new Point(1126, 685);
+			label2.Image = Properties.Resources.Add;
+			label2.Location = new Point(1221, 699);
 			label2.MinimumSize = new Size(40, 40);
 			label2.Name = "label2";
 			label2.Size = new Size(40, 40);
 			label2.TabIndex = 5;
+			label2.Click += label2_Click;
 			// 
 			// label3
 			// 
+			label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			label3.AutoSize = true;
 			label3.Image = Properties.Resources.Edit;
-			label3.Location = new Point(1126, 590);
+			label3.Location = new Point(1221, 604);
 			label3.MinimumSize = new Size(40, 40);
 			label3.Name = "label3";
 			label3.Size = new Size(40, 40);
@@ -217,7 +229,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1235, 777);
+			ClientSize = new Size(1330, 791);
 			Controls.Add(label3);
 			Controls.Add(label2);
 			Controls.Add(label1);
@@ -239,16 +251,17 @@
 		private Button AddButton;
 		private Button EditButton;
 		private Button DeleteButton;
-		private DataGridViewTextBoxColumn ID;
 		private DataGridViewTextBoxColumn PatientName;
+		private Label label1;
+		private Label label2;
+		private Label label3;
+		private DataGridViewTextBoxColumn ID;
+		private DataGridViewTextBoxColumn PatientNames;
 		private DataGridViewTextBoxColumn Dob;
 		private DataGridViewTextBoxColumn Gender;
 		private DataGridViewTextBoxColumn Phone;
 		private DataGridViewTextBoxColumn Address;
 		private DataGridViewTextBoxColumn PersonId;
 		private DataGridViewTextBoxColumn EMail;
-		private Label label1;
-		private Label label2;
-		private Label label3;
 	}
 }

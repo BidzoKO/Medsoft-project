@@ -1,11 +1,17 @@
-using Medsoft_სატესტო_პროგრამა.Models.Dtos;
+using Medsoft_სატესტო_პროგრამა.Services;
 
 namespace Medsoft_სატესტო_პროგრამა
 {
 	public partial class Home : Form
 	{
-		public Home()
+		private readonly IHomeService _homeService;
+
+		private AddPatientWindow patientForm;
+
+		public Home(IHomeService homeService)
 		{
+			_homeService = homeService;
+
 			InitializeComponent();
 			InitialData();
 			this.Load += new EventHandler(Home_Load);
@@ -13,9 +19,14 @@ namespace Medsoft_სატესტო_პროგრამა
 			this.Click += new EventHandler(Form_MouseDown);
 		}
 
-		private void Form_MouseDown(object sender, EventArgs e)
+		private void ClearTableSelection()
 		{
 			PatientTable.ClearSelection();
+			PatientTable.CurrentCell = null;
+		}
+		private void Form_MouseDown(object sender, EventArgs e)
+		{
+			ClearTableSelection();
 		}
 
 		private void PatientTable_MouseClick(object sender, MouseEventArgs e)
@@ -24,79 +35,15 @@ namespace Medsoft_სატესტო_პროგრამა
 
 			if (hitTestInfo.Type == DataGridViewHitTestType.None)
 			{
-				PatientTable.ClearSelection();
+				ClearTableSelection();
 			}
 		}
 
-		private void InitialData()
+		private async Task InitialData()
 		{
-			var listOfPatients = new List<PatientDto>()
-			{
-				new PatientDto()
-				{
-					ID = 1,
-					PatientName = "Test",
-					Dob = new DateOnly(1998, 10, 26),
-					Gender = "male",
-					Phone = "",
-					Address = "",
-					PersonId = 1,
-					EMail = "",
-				},
-				new PatientDto()
-				{
-					ID = 1,
-					PatientName = "Test",
-					Dob = new DateOnly(1998, 10, 26),
-					Gender = "male",
-					Phone = "",
-					Address = "",
-					PersonId = 1,
-					EMail = "",
-				},
-				new PatientDto()
-				{
-					ID = 1,
-					PatientName = "Test",
-					Dob = new DateOnly(1998, 10, 26),
-					Gender = "male",
-					Phone = "",
-					Address = "",
-					PersonId = 1,
-					EMail = "",
-				},
-				new PatientDto()
-				{
-					ID = 1,
-					PatientName = "Test",
-					Dob = new DateOnly(1998, 10, 26),
-					Gender = "male",
-					Phone = "",
-					Address = "",
-					PersonId = 1,
-					EMail = "",
-				},
+			var patientList = await _homeService.GetAll();
 
-			};
-
-			foreach (var patient in listOfPatients)
-			{
-				DtoToGridMapper(patient);
-			}
-		}
-
-		private void DtoToGridMapper(PatientDto patient)
-		{
-			PatientTable.Rows.Add(
-					patient.ID,
-					patient.PatientName,
-					patient.Dob,
-					patient.Gender,
-					patient.Phone,
-					patient.Address,
-					patient.PersonId,
-					patient.EMail
-				);
+			PatientTable.DataSource = patientList;
 		}
 
 		protected void OnCellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -118,27 +65,48 @@ namespace Medsoft_სატესტო_პროგრამა
 			PatientTable.ClearSelection();
 		}
 
-		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		private void Add_Click(object sender, EventArgs e)
 		{
-
+			if (patientForm == null || patientForm.IsDisposed)
+			{
+				patientForm = new AddPatientWindow();
+			}
+			patientForm.ShowDialog();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void Edit_Click(object sender, EventArgs e)
 		{
+			if (patientForm == null || patientForm.IsDisposed)
+			{
+				patientForm = new AddPatientWindow();
+			}
 
+			patientForm.ShowDialog();
 		}
 
-		private void button2_Click(object sender, EventArgs e)
+		private async void Delete_Click(object sender, EventArgs e)
 		{
+			DialogResult result = new DialogResult();
 
+			if (PatientTable.CurrentRow is not null)
+			{
+				result = MessageBox.Show("Are you sure you want to delete this item?",
+							  "Confirm Delete",
+							  MessageBoxButtons.YesNo,
+							  MessageBoxIcon.Warning);
+			}
+
+			if (result is DialogResult.Yes)
+			{
+				var idValue = (int)PatientTable.CurrentRow!.Cells["ID"].Value;
+
+				await _homeService.Delete(idValue);
+			}
+
+			await InitialData();
 		}
 
-		private void button3_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label1_Click(object sender, EventArgs e)
+		private void label2_Click(object sender, EventArgs e)
 		{
 
 		}
