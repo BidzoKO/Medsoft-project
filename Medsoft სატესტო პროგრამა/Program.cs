@@ -25,7 +25,7 @@ namespace Medsoft_სატესტო_პროგრამა
 		{
 			services.AddDbContext<PatientAppDbContext>(options =>
 				options.UseSqlServer("Server=BPC;Database=MedsoftDb;Trusted_Connection=True;TrustServerCertificate=True"));
-			services.AddScoped<IHomeService, HomeService>();
+			services.AddScoped<IPatientService, PatientService>();
 			services.AddSingleton<Home>();
 		}
 	}

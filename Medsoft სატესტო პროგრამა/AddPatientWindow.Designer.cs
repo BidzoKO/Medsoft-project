@@ -29,14 +29,12 @@
 		private void InitializeComponent()
 		{
 			AddressField = new TextBox();
-			FirstNameField = new TextBox();
+			NameField = new TextBox();
 			MobileField = new TextBox();
-			LastNameField = new TextBox();
 			PatientIdField = new TextBox();
 			EmailField = new TextBox();
 			GenderField = new ComboBox();
-			FirstNameLabel = new Label();
-			LastNameLabel = new Label();
+			NameLabel = new Label();
 			PhoneLabel = new Label();
 			AdressLabel = new Label();
 			UserIdLabel = new Label();
@@ -47,89 +45,72 @@
 			NewPatientHeader = new Label();
 			ConfirmBtn = new Button();
 			CancelBtn = new Button();
+			NameErrorText = new Label();
+			PhoneErrorText = new Label();
+			AddressErrorText = new Label();
+			UserIdErrorText = new Label();
+			EmailErrorText = new Label();
 			SuspendLayout();
 			// 
 			// AddressField
 			// 
-			AddressField.Location = new Point(168, 269);
-			AddressField.MaxLength = 20;
+			AddressField.Location = new Point(168, 215);
+			AddressField.MaxLength = 30;
 			AddressField.Name = "AddressField";
 			AddressField.Size = new Size(137, 23);
 			AddressField.TabIndex = 0;
 			// 
-			// FirstNameField
+			// NameField
 			// 
-			FirstNameField.Location = new Point(168, 95);
-			FirstNameField.Name = "FirstNameField";
-			FirstNameField.Size = new Size(232, 23);
-			FirstNameField.TabIndex = 0;
-			AddressField.MaxLength = 30;
+			NameField.Location = new Point(168, 95);
+			NameField.Name = "NameField";
+			NameField.Size = new Size(329, 23);
+			NameField.TabIndex = 0;
 			// 
 			// MobileField
 			// 
-			MobileField.Location = new Point(168, 210);
+			MobileField.Location = new Point(168, 156);
 			MobileField.Name = "MobileField";
 			MobileField.Size = new Size(137, 23);
 			MobileField.TabIndex = 0;
-			AddressField.MaxLength = 20;
-			// 
-			// LastNameField
-			// 
-			LastNameField.Location = new Point(168, 153);
-			LastNameField.Name = "LastNameField";
-			LastNameField.Size = new Size(232, 23);
-			LastNameField.TabIndex = 0;
-			AddressField.MaxLength = 50;
 			// 
 			// PatientIdField
 			// 
-			PatientIdField.Location = new Point(168, 328);
+			PatientIdField.Location = new Point(168, 274);
 			PatientIdField.Name = "PatientIdField";
 			PatientIdField.Size = new Size(137, 23);
 			PatientIdField.TabIndex = 0;
-			AddressField.MaxLength = 20;
 			// 
 			// EmailField
 			// 
-			EmailField.Location = new Point(168, 392);
+			EmailField.Location = new Point(168, 338);
 			EmailField.Name = "EmailField";
 			EmailField.Size = new Size(137, 23);
 			EmailField.TabIndex = 0;
-			AddressField.MaxLength = 30;
 			// 
 			// GenderField
 			// 
 			GenderField.DropDownStyle = ComboBoxStyle.DropDownList;
 			GenderField.FormattingEnabled = true;
-			GenderField.Items.AddRange(new object[] { "კაცი", "ქალი" });
-			GenderField.Location = new Point(406, 395);
+			GenderField.Items.AddRange(new object[] { "მამრობითი", "მდედრობითი" });
+			GenderField.Location = new Point(406, 341);
 			GenderField.Name = "GenderField";
-			GenderField.Size = new Size(91, 23);
+			GenderField.Size = new Size(112, 23);
 			GenderField.TabIndex = 1;
-			GenderField.SelectedIndexChanged += GenderField_SelectedIndexChanged;
 			// 
-			// FirstNameLabel
+			// NameLabel
 			// 
-			FirstNameLabel.AutoSize = true;
-			FirstNameLabel.Location = new Point(109, 98);
-			FirstNameLabel.Name = "FirstNameLabel";
-			FirstNameLabel.Size = new Size(53, 15);
-			FirstNameLabel.TabIndex = 2;
-			FirstNameLabel.Text = "სახელი";
-			// 
-			// LastNameLabel
-			// 
-			LastNameLabel.AutoSize = true;
-			LastNameLabel.Location = new Point(120, 156);
-			LastNameLabel.Name = "LastNameLabel";
-			LastNameLabel.Size = new Size(42, 15);
-			LastNameLabel.TabIndex = 2;
-			LastNameLabel.Text = "გვარი";
+			NameLabel.AutoSize = true;
+			NameLabel.Location = new Point(71, 98);
+			NameLabel.Name = "NameLabel";
+			NameLabel.Size = new Size(91, 15);
+			NameLabel.TabIndex = 2;
+			NameLabel.Text = "სახელი გვარი";
 			// 
 			// PhoneLabel
 			// 
 			PhoneLabel.AutoSize = true;
-			PhoneLabel.Location = new Point(86, 213);
+			PhoneLabel.Location = new Point(86, 159);
 			PhoneLabel.Name = "PhoneLabel";
 			PhoneLabel.Size = new Size(76, 15);
 			PhoneLabel.TabIndex = 2;
@@ -138,7 +119,7 @@
 			// AdressLabel
 			// 
 			AdressLabel.AutoSize = true;
-			AdressLabel.Location = new Point(88, 272);
+			AdressLabel.Location = new Point(88, 218);
 			AdressLabel.Name = "AdressLabel";
 			AdressLabel.Size = new Size(74, 15);
 			AdressLabel.TabIndex = 2;
@@ -147,7 +128,7 @@
 			// UserIdLabel
 			// 
 			UserIdLabel.AutoSize = true;
-			UserIdLabel.Location = new Point(61, 331);
+			UserIdLabel.Location = new Point(61, 277);
 			UserIdLabel.Name = "UserIdLabel";
 			UserIdLabel.Size = new Size(101, 15);
 			UserIdLabel.TabIndex = 2;
@@ -156,7 +137,7 @@
 			// EmailLabel
 			// 
 			EmailLabel.AutoSize = true;
-			EmailLabel.Location = new Point(115, 395);
+			EmailLabel.Location = new Point(115, 341);
 			EmailLabel.Name = "EmailLabel";
 			EmailLabel.Size = new Size(47, 15);
 			EmailLabel.TabIndex = 2;
@@ -165,7 +146,7 @@
 			// DobLabel
 			// 
 			DobLabel.AutoSize = true;
-			DobLabel.Location = new Point(317, 272);
+			DobLabel.Location = new Point(317, 218);
 			DobLabel.Name = "DobLabel";
 			DobLabel.Size = new Size(83, 15);
 			DobLabel.TabIndex = 2;
@@ -174,7 +155,7 @@
 			// GenderLabel
 			// 
 			GenderLabel.AutoSize = true;
-			GenderLabel.Location = new Point(360, 398);
+			GenderLabel.Location = new Point(360, 344);
 			GenderLabel.Name = "GenderLabel";
 			GenderLabel.Size = new Size(40, 15);
 			GenderLabel.TabIndex = 2;
@@ -183,9 +164,9 @@
 			// BirthdayField
 			// 
 			BirthdayField.Format = DateTimePickerFormat.Short;
-			BirthdayField.Location = new Point(406, 269);
+			BirthdayField.Location = new Point(406, 215);
 			BirthdayField.Name = "BirthdayField";
-			BirthdayField.Size = new Size(91, 23);
+			BirthdayField.Size = new Size(112, 23);
 			BirthdayField.TabIndex = 3;
 			// 
 			// NewPatientHeader
@@ -194,39 +175,106 @@
 			NewPatientHeader.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			NewPatientHeader.Location = new Point(219, 40);
 			NewPatientHeader.Name = "NewPatientHeader";
-			NewPatientHeader.Size = new Size(131, 20);
+			NewPatientHeader.Size = new Size(185, 20);
 			NewPatientHeader.TabIndex = 2;
-			NewPatientHeader.Text = "ახალი პაციენტი";
+			NewPatientHeader.Text = "პაციენტის ინფორმაცია";
 			// 
 			// ConfirmBtn
 			// 
 			ConfirmBtn.BackColor = Color.DarkGreen;
 			ConfirmBtn.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			ConfirmBtn.ForeColor = SystemColors.Control;
-			ConfirmBtn.Location = new Point(168, 466);
+			ConfirmBtn.Location = new Point(168, 412);
 			ConfirmBtn.Name = "ConfirmBtn";
 			ConfirmBtn.Size = new Size(125, 32);
 			ConfirmBtn.TabIndex = 4;
 			ConfirmBtn.Text = "დადასტურება";
 			ConfirmBtn.UseVisualStyleBackColor = false;
+			ConfirmBtn.Click += ConfirmBtn_Click;
 			// 
 			// CancelBtn
 			// 
 			CancelBtn.BackColor = Color.DarkRed;
 			CancelBtn.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			CancelBtn.ForeColor = SystemColors.Control;
-			CancelBtn.Location = new Point(341, 466);
+			CancelBtn.Location = new Point(341, 412);
 			CancelBtn.Name = "CancelBtn";
 			CancelBtn.Size = new Size(111, 32);
 			CancelBtn.TabIndex = 4;
 			CancelBtn.Text = "დაბრუნება";
 			CancelBtn.UseVisualStyleBackColor = false;
+			CancelBtn.Click += CancelBtn_Click;
+			// 
+			// NameErrorText
+			// 
+			NameErrorText.AutoSize = true;
+			NameErrorText.Font = new Font("Segoe UI", 8.25F);
+			NameErrorText.ForeColor = Color.Red;
+			NameErrorText.Location = new Point(168, 121);
+			NameErrorText.Name = "NameErrorText";
+			NameErrorText.Size = new Size(109, 13);
+			NameErrorText.TabIndex = 5;
+			NameErrorText.Text = "სახელში შეცდომა";
+			NameErrorText.Visible = false;
+			// 
+			// PhoneErrorText
+			// 
+			PhoneErrorText.AutoSize = true;
+			PhoneErrorText.Font = new Font("Segoe UI", 8.25F);
+			PhoneErrorText.ForeColor = Color.Red;
+			PhoneErrorText.Location = new Point(168, 182);
+			PhoneErrorText.Name = "PhoneErrorText";
+			PhoneErrorText.Size = new Size(129, 13);
+			PhoneErrorText.TabIndex = 5;
+			PhoneErrorText.Text = "მობილურში შეცდომა";
+			PhoneErrorText.Visible = false;
+			// 
+			// AddressErrorText
+			// 
+			AddressErrorText.AutoSize = true;
+			AddressErrorText.Font = new Font("Segoe UI", 8.25F);
+			AddressErrorText.ForeColor = Color.Red;
+			AddressErrorText.Location = new Point(168, 241);
+			AddressErrorText.Name = "AddressErrorText";
+			AddressErrorText.Size = new Size(126, 13);
+			AddressErrorText.TabIndex = 5;
+			AddressErrorText.Text = "მისამართში შეცდომა";
+			AddressErrorText.Visible = false;
+			// 
+			// UserIdErrorText
+			// 
+			UserIdErrorText.AutoSize = true;
+			UserIdErrorText.Font = new Font("Segoe UI", 8.25F);
+			UserIdErrorText.ForeColor = Color.Red;
+			UserIdErrorText.Location = new Point(168, 300);
+			UserIdErrorText.Name = "UserIdErrorText";
+			UserIdErrorText.Size = new Size(146, 13);
+			UserIdErrorText.TabIndex = 5;
+			UserIdErrorText.Text = "პირად ნომერში შეცდომა";
+			UserIdErrorText.Visible = false;
+			// 
+			// EmailErrorText
+			// 
+			EmailErrorText.AutoSize = true;
+			EmailErrorText.Font = new Font("Segoe UI", 8.25F);
+			EmailErrorText.ForeColor = Color.Red;
+			EmailErrorText.Location = new Point(168, 364);
+			EmailErrorText.Name = "EmailErrorText";
+			EmailErrorText.Size = new Size(104, 13);
+			EmailErrorText.TabIndex = 5;
+			EmailErrorText.Text = "მეილში შეცდომა";
+			EmailErrorText.Visible = false;
 			// 
 			// AddPatientWindow
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(584, 561);
+			ClientSize = new Size(584, 505);
+			Controls.Add(EmailErrorText);
+			Controls.Add(UserIdErrorText);
+			Controls.Add(AddressErrorText);
+			Controls.Add(PhoneErrorText);
+			Controls.Add(NameErrorText);
 			Controls.Add(CancelBtn);
 			Controls.Add(ConfirmBtn);
 			Controls.Add(BirthdayField);
@@ -236,15 +284,13 @@
 			Controls.Add(UserIdLabel);
 			Controls.Add(AdressLabel);
 			Controls.Add(PhoneLabel);
-			Controls.Add(LastNameLabel);
 			Controls.Add(NewPatientHeader);
-			Controls.Add(FirstNameLabel);
+			Controls.Add(NameLabel);
 			Controls.Add(GenderField);
 			Controls.Add(EmailField);
 			Controls.Add(PatientIdField);
-			Controls.Add(LastNameField);
 			Controls.Add(MobileField);
-			Controls.Add(FirstNameField);
+			Controls.Add(NameField);
 			Controls.Add(AddressField);
 			FormBorderStyle = FormBorderStyle.FixedSingle;
 			Name = "AddPatientWindow";
@@ -256,14 +302,12 @@
 		#endregion
 
 		private TextBox AddressField;
-		private TextBox FirstNameField;
+		private TextBox NameField;
 		private TextBox MobileField;
-		private TextBox LastNameField;
 		private TextBox PatientIdField;
 		private TextBox EmailField;
 		private ComboBox GenderField;
-		private Label FirstNameLabel;
-		private Label LastNameLabel;
+		private Label NameLabel;
 		private Label PhoneLabel;
 		private Label AdressLabel;
 		private Label UserIdLabel;
@@ -274,5 +318,10 @@
 		private Label NewPatientHeader;
 		private Button ConfirmBtn;
 		private Button CancelBtn;
+		private Label NameErrorText;
+		private Label PhoneErrorText;
+		private Label AddressErrorText;
+		private Label UserIdErrorText;
+		private Label EmailErrorText;
 	}
 }

@@ -1,16 +1,17 @@
+using Medsoft_სატესტო_პროგრამა.Models.Dtos;
 using Medsoft_სატესტო_პროგრამა.Services;
 
 namespace Medsoft_სატესტო_პროგრამა
 {
 	public partial class Home : Form
 	{
-		private readonly IHomeService _homeService;
+		private readonly IPatientService _patientService;
 
 		private AddPatientWindow patientForm;
 
-		public Home(IHomeService homeService)
+		public Home(IPatientService patientService)
 		{
-			_homeService = homeService;
+			_patientService = patientService;
 
 			InitializeComponent();
 			InitialData();
@@ -24,6 +25,7 @@ namespace Medsoft_სატესტო_პროგრამა
 			PatientTable.ClearSelection();
 			PatientTable.CurrentCell = null;
 		}
+
 		private void Form_MouseDown(object sender, EventArgs e)
 		{
 			ClearTableSelection();
@@ -39,9 +41,9 @@ namespace Medsoft_სატესტო_პროგრამა
 			}
 		}
 
-		private async Task InitialData()
+		private async void InitialData()
 		{
-			var patientList = await _homeService.GetAll();
+			var patientList = await _patientService.GetAll();
 
 			PatientTable.DataSource = patientList;
 		}
@@ -69,19 +71,27 @@ namespace Medsoft_სატესტო_პროგრამა
 		{
 			if (patientForm == null || patientForm.IsDisposed)
 			{
-				patientForm = new AddPatientWindow();
+				patientForm = new AddPatientWindow(_patientService);
 			}
 			patientForm.ShowDialog();
+
+			InitialData();
 		}
 
 		private void Edit_Click(object sender, EventArgs e)
 		{
 			if (patientForm == null || patientForm.IsDisposed)
 			{
-				patientForm = new AddPatientWindow();
+				patientForm = new AddPatientWindow(_patientService);
+
+				var selectedPatient = (PatientDto)PatientTable.SelectedRows[0].DataBoundItem;
+
+				patientForm.patient = selectedPatient;
 			}
 
 			patientForm.ShowDialog();
+
+			InitialData();
 		}
 
 		private async void Delete_Click(object sender, EventArgs e)
@@ -100,10 +110,10 @@ namespace Medsoft_სატესტო_პროგრამა
 			{
 				var idValue = (int)PatientTable.CurrentRow!.Cells["ID"].Value;
 
-				await _homeService.Delete(idValue);
+				await _patientService.Delete(idValue);
 			}
 
-			await InitialData();
+			InitialData();
 		}
 
 		private void label2_Click(object sender, EventArgs e)
