@@ -16,6 +16,7 @@ namespace Medsoft_სატესტო_პროგრამა
 			InitializeComponent();
 			this.MaximizeBox = false;
 			this.Load += new EventHandler(AddPatientWindow_Load);
+			this.FormClosing += new FormClosingEventHandler(FormClose);
 		}
 
 		private void AddPatientWindow_Load(object sender, EventArgs e)
@@ -30,14 +31,31 @@ namespace Medsoft_სატესტო_პროგრამა
 				GenderField.SelectedItem = patient.Gender;
 				BirthdayField.Value = patient.Dob.ToDateTime(TimeOnly.MinValue);
 			}
+			else
+			{
+				GenderField.SelectedIndex = 0;
+			}
 		}
 
 		private void CancelBtn_Click(object sender, EventArgs e)
 		{
 			var result = MessageBox.Show("გამოსვლა?",
-							  "გამოსვლა?",
-							  MessageBoxButtons.YesNo,
-							  MessageBoxIcon.Warning);
+				"გამოსვლა?",
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Warning);
+
+			if (result == DialogResult.Yes)
+			{
+				this.Dispose();
+			}
+		}
+
+		private void FormClose(object sender, FormClosingEventArgs e)
+		{
+			var result = MessageBox.Show("გამოსვლა?",
+				"გამოსვლა?",
+				MessageBoxButtons.YesNo,
+				MessageBoxIcon.Warning);
 
 			if (result == DialogResult.Yes)
 			{

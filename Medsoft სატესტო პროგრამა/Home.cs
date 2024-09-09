@@ -100,7 +100,7 @@ namespace Medsoft_სატესტო_პროგრამა
 
 			if (PatientTable.CurrentRow is not null)
 			{
-				result = MessageBox.Show("Are you sure you want to delete this item?",
+				result = MessageBox.Show("ნივთის წაშლა?",
 							  "Confirm Delete",
 							  MessageBoxButtons.YesNo,
 							  MessageBoxIcon.Warning);

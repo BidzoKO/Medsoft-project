@@ -18,6 +18,14 @@ public partial class PatientAppDbContext : DbContext
 
 	public virtual DbSet<Patient> Patients { get; set; }
 
+	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+	{
+		if (!optionsBuilder.IsConfigured)
+		{
+			optionsBuilder.UseSqlServer("Server=BPC;Database=MedsoftDb;Trusted_Connection=True;TrustServerCertificate=True");
+		}
+	}
+
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.Entity<Gender>(entity =>
