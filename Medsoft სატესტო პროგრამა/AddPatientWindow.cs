@@ -95,7 +95,7 @@ namespace Medsoft_სატესტო_პროგრამა
 				NameErrorText.Visible = false;
 			}
 
-			if (!Regex.IsMatch(patient.Phone, @"^5\d{9}$"))
+			if (!Regex.IsMatch(patient.Phone, @"^5\d{8}$"))
 			{
 				PhoneErrorText.Visible = true;
 				errorCount += 1;
