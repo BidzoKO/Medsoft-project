@@ -55,10 +55,11 @@ public partial class PatientAppDbContext : DbContext
 		{
 			entity.ToTable("patient");
 
+			entity.HasIndex(e => e.GenderId, "IX_patient_genderID");
+
 			entity.Property(e => e.Id).HasColumnName("ID");
 			entity.Property(e => e.Address)
 				.HasMaxLength(500)
-				.IsUnicode(false)
 				.HasColumnName("address");
 			entity.Property(e => e.Email)
 				.HasMaxLength(255)

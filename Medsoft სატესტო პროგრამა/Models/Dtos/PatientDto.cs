@@ -6,9 +6,9 @@
 		public string PatientName { get; set; } = string.Empty;
 		public DateOnly Dob { get; set; }
 		public string Gender { get; set; } = string.Empty;
-		public string Phone { get; set; } = string.Empty;
-		public string Address { get; set; } = string.Empty;
-		public string PersonId { get; set; } = string.Empty;
-		public string Email { get; set; } = string.Empty;
+		public string? Phone { get; set; }
+		public string? Address { get; set; }
+		public string? PersonId { get; set; }
+		public string? Email { get; set; }
 	}
 }

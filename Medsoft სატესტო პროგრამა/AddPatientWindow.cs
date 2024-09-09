@@ -52,15 +52,7 @@ namespace Medsoft_სატესტო_პროგრამა
 
 		private void FormClose(object sender, FormClosingEventArgs e)
 		{
-			var result = MessageBox.Show("გამოსვლა?",
-				"გამოსვლა?",
-				MessageBoxButtons.YesNo,
-				MessageBoxIcon.Warning);
-
-			if (result == DialogResult.Yes)
-			{
-				this.Dispose();
-			}
+			this.Dispose();
 		}
 
 		private async void ConfirmBtn_Click(object sender, EventArgs e)
@@ -113,7 +105,7 @@ namespace Medsoft_სატესტო_პროგრამა
 				NameErrorText.Visible = false;
 			}
 
-			if (!Regex.IsMatch(patient.Phone, @"^5\d{8}$"))
+			if (patient.Phone is not null && !Regex.IsMatch(patient.Phone, @"^5\d{8}$"))
 			{
 				PhoneErrorText.Visible = true;
 				errorCount += 1;
@@ -123,7 +115,7 @@ namespace Medsoft_სატესტო_პროგრამა
 				PhoneErrorText.Visible = false;
 			}
 
-			if (!Regex.IsMatch(patient.Address, @"^[\w\s,\.]+$"))
+			if (patient.Address is not null && !Regex.IsMatch(patient.Address, @"^[\w\s,\.]+$"))
 			{
 				AddressErrorText.Visible = true;
 				errorCount += 1;
@@ -133,7 +125,7 @@ namespace Medsoft_სატესტო_პროგრამა
 				AddressErrorText.Visible = false;
 			}
 
-			if (!Regex.IsMatch(patient.PersonId, @"^\d{10}$"))
+			if (patient.PersonId is not null && !Regex.IsMatch(patient.PersonId, @"^\d{10}$"))
 			{
 				UserIdErrorText.Visible = true;
 				errorCount += 1;
@@ -143,7 +135,7 @@ namespace Medsoft_სატესტო_პროგრამა
 				UserIdErrorText.Visible = false;
 			}
 
-			if (!Regex.IsMatch(patient.Email, @"^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$"))
+			if (patient.Email is not null && !Regex.IsMatch(patient.Email, @"^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$"))
 			{
 				EmailErrorText.Visible = true;
 				errorCount += 1;

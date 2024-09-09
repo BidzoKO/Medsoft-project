@@ -12,7 +12,7 @@ public partial class Patient
 
 	public string? Phone { get; set; }
 
-	public string Address { get; set; } = null!;
+	public string? Address { get; set; }
 
 	public string? PatientId { get; set; }
 

@@ -65,8 +65,7 @@ namespace Medsoft_სატესტო_პროგრამა.Migrations
 
                     b.Property<string>("Address")
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)")
+                        .HasColumnType("nvarchar(500)")
                         .HasColumnName("address");
 
                     b.Property<DateOnly>("Dob")
@@ -102,7 +101,7 @@ namespace Medsoft_სატესტო_პროგრამა.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenderId");
+                    b.HasIndex(new[] { "GenderId" }, "IX_patient_genderID");
 
                     b.ToTable("patient", (string)null);
 

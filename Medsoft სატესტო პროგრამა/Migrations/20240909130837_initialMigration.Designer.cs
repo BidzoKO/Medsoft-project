@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Medsoft_სატესტო_პროგრამა.Migrations
 {
     [DbContext(typeof(PatientAppDbContext))]
-    [Migration("20240905143856_intialData")]
-    partial class intialData
+    [Migration("20240909130837_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,10 +67,8 @@ namespace Medsoft_სატესტო_პროგრამა.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(500)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(500)")
+                        .HasColumnType("nvarchar(500)")
                         .HasColumnName("address");
 
                     b.Property<DateOnly>("Dob")
@@ -106,7 +104,7 @@ namespace Medsoft_სატესტო_პროგრამა.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenderId");
+                    b.HasIndex(new[] { "GenderId" }, "IX_patient_genderID");
 
                     b.ToTable("patient", (string)null);
 
